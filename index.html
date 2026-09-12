@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blackteint33 — Vitres teintées automobile, Coimères</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet">
+<style>
+  :root{
+    --ink:#0d0d0c;
+    --paper:#f2efe9;
+    --line:rgba(242,239,233,.14);
+    --muted:#9b968b;
+    --accent:#c98a3f;
+    --mono:"SF Mono","Courier New",monospace;
+    --sans:-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
+  h2{font-size:clamp(26px,3.2vw,40px);font-weight:600;line-height:1.15;margin:0 0 16px;letter-spacing:-.01em}
+  p{color:var(--muted);line-height:1.6;font-size:16px;max-width:560px}
+
+  /* ---------- HEADER ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-mode:difference}
+  .nav-row{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:0 auto;padding:0 24px}
+  .logo{font-weight:700;font-size:14px;letter-spacing:.02em}
+  .nav-phone{font-family:var(--mono);font-size:13px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;padding:0}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.94) contrast(1.04)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(13,13,12,.1) 0%, rgba(13,13,12,.05) 35%, rgba(13,13,12,.85) 100%)}
+  .hero-content{position:relative;z-index:2;width:100%;padding:0 24px 64px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .hero-brand{
+    font-size:clamp(44px,7.5vw,96px);font-weight:800;line-height:.92;letter-spacing:-.03em;
+    margin:0 0 6px;
+  }
+  .hero-tagline{font-size:clamp(20px,2.6vw,30px);font-weight:600;color:var(--muted);margin:0 0 18px;letter-spacing:-.01em}
+  .hero-sub{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px}
+  .hero-sub b{color:var(--paper)}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:4px;
+    font-size:14px;font-weight:600;letter-spacing:.01em;text-decoration:none;
+  }
+  .btn-primary{background:var(--paper);color:var(--ink)}
+  .btn-secondary{border:1px solid rgba(242,239,233,.35);color:var(--paper)}
+
+  /* ---------- WINDOW DROP EXPERIENCE ---------- */
+  .drop-intro{padding-bottom:32px}
+  .drop-intro .wrap{max-width:640px}
+
+  .pin-wrap{position:relative;height:420vh}
+  .pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--ink)}
+  .stage{position:relative;width:min(92vw,1400px);aspect-ratio:2738/1825;flex-shrink:0}
+  .stage img.base{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+  .slot{position:absolute;overflow:hidden}
+  .slot img{position:absolute;top:0;left:0;width:100%;height:auto;display:block;will-change:transform}
+
+  .drop-progress{
+    position:absolute;left:50%;bottom:6%;transform:translateX(-50%);
+    display:flex;gap:8px;background:rgba(13,13,12,.55);backdrop-filter:blur(6px);
+    padding:8px 14px;border-radius:100px;font-family:var(--mono);font-size:11px;color:var(--muted);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .drop-progress b{color:var(--paper)}
+  .drop-step{
+    position:absolute;top:6%;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    text-align:center;white-space:nowrap;
+  }
+  .drop-note{max-width:640px;margin:28px auto 0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+  /* fallback statique pour prefers-reduced-motion */
+  .drop-static{display:none}
+  .drop-static .scene{position:relative;width:100%;aspect-ratio:2738/1825;border-radius:8px;overflow:hidden}
+  .drop-static .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .drop-static .toggle-row{display:flex;gap:10px;margin-top:20px;justify-content:center}
+  .drop-static .toggle-btn{
+    font-family:var(--mono);font-size:12px;padding:9px 16px;border-radius:100px;
+    border:1px solid rgba(242,239,233,.2);background:transparent;color:var(--paper);cursor:pointer;
+  }
+  .drop-static .toggle-btn.active{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+  @media (prefers-reduced-motion: reduce){
+    .pin-wrap{display:none}
+    .drop-static{display:block}
+  }
+
+  @media (max-width:760px){
+    .stage{ width:230vw; }
+  }
+
+  /* ---------- PRESTATIONS ---------- */
+  .presta-list{border-top:1px solid var(--line)}
+  .presta-row{display:grid;grid-template-columns:40px 1fr 160px;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .presta-row .n{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .presta-row h3{font-size:18px;font-weight:600;margin:0 0 4px}
+  .presta-row p{font-size:14px;margin:0;max-width:480px}
+  .presta-row .price{font-family:var(--mono);font-size:13px;color:var(--paper);text-align:right}
+
+  /* ---------- TARIFS ---------- */
+  .tarif-table{font-size:14px;margin-top:8px}
+  .tarif-table .tr{display:grid;grid-template-columns:1fr 120px 120px;gap:16px;padding:14px 0;border-top:1px solid var(--line);align-items:baseline;color:var(--muted)}
+  .tarif-table .tr:last-child{border-bottom:1px solid var(--line)}
+  .tarif-table .tr.th{color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-family:var(--mono)}
+  .tarif-table .tr span:nth-child(2),.tarif-table .tr span:nth-child(3){color:var(--paper);text-align:right;font-family:var(--mono);font-size:13px}
+  .tarif-note{margin-top:16px;font-size:13px}
+
+  /* ---------- REGLEMENTATION ---------- */
+  .statement{padding:80px 0;text-align:center}
+  .statement p{font-size:clamp(20px,2.6vw,28px);color:var(--paper);max-width:760px;margin:0 auto;line-height:1.4}
+  .statement .src{display:block;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding:96px 0 64px}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .contact-phone{font-size:clamp(32px,5vw,56px);font-weight:700;display:inline-block;margin:8px 0 20px}
+  .contact-addr{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.8}
+  form{display:flex;flex-direction:column;gap:12px}
+  form input,form select,form textarea{
+    background:transparent;border:1px solid rgba(242,239,233,.2);border-radius:4px;
+    color:var(--paper);padding:12px 14px;font-size:14px;font-family:var(--sans);
+  }
+  form textarea{min-height:90px;resize:vertical}
+  form .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  form input,form select,form textarea{min-width:0;width:100%}
+  form button{margin-top:4px}
+
+  footer{padding:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11px;color:#615c50}
+
+  @media (max-width:760px){
+    section{padding:64px 0}
+    .contact-grid{grid-template-columns:1fr;gap:32px}
+    .presta-row{grid-template-columns:24px 1fr;grid-template-areas:"n h" ". p" ". pr"}
+    .presta-row .n{grid-area:n}
+    .presta-row h3{grid-area:h}
+    .presta-row p{grid-area:p}
+    .presta-row .price{grid-area:pr;text-align:left;margin-top:4px}
+    .tarif-table .tr{grid-template-columns:1fr;gap:2px}
+    .tarif-table .tr.th{display:none}
+    .tarif-table .tr span:nth-child(2)::before{content:"3/4 arrière : ";color:var(--muted)}
+    .tarif-table .tr span:nth-child(3)::before{content:"Complet : ";color:var(--muted)}
+    .tarif-table .tr span:nth-child(2),.tarif-table .tr span:nth-child(3){text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <div class="logo">BLACKTEINT33</div>
+    <a href="tel:+33668646886" class="nav-phone">06 68 64 68 86</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img class="hero-img"
+    src="img/drop/hero-audi-1440.jpg"
+    srcset="img/drop/hero-audi-480.jpg 480w, img/drop/hero-audi-768.jpg 768w, img/drop/hero-audi-1024.jpg 1024w, img/drop/hero-audi-1440.jpg 1440w, img/drop/hero-audi-1920.jpg 1920w"
+    sizes="100vw"
+    width="2738" height="1825"
+    alt="Véhicule vitres teintées, atelier Blackteint33"
+    fetchpriority="high">
+  <div class="hero-content">
+    <div>
+      <div class="hero-brand">BLACKTEINT33</div>
+      <div class="hero-tagline">Vitres teintées automobile.</div>
+      <div class="hero-sub">Coimères · près de Langon · 17 ans d'expérience</div>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+        <a href="#teinte" class="btn btn-secondary">Voir la teinte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WINDOW DROP EXPERIENCE ================= -->
+<section class="drop-intro" id="teinte">
+  <div class="wrap">
+    <span class="k">Tester la teinte</span>
+    <h2>Avant / après.</h2>
+  </div>
+</section>
+
+<div class="pin-wrap" id="pinWrap">
+  <div class="pin">
+    <div class="stage" id="stage">
+      <img class="base" id="baseImg"
+        src="img/drop/base_car-1440.jpg"
+        srcset="img/drop/base_car-480.jpg 480w, img/drop/base_car-768.jpg 768w, img/drop/base_car-1024.jpg 1024w, img/drop/base_car-1440.jpg 1440w, img/drop/base_car-1920.jpg 1920w"
+        sizes="100vw"
+        width="2738" height="1825" alt="Véhicule de démonstration, carrosserie" loading="lazy">
+
+      <div class="slot" id="slotFront">
+        <img id="glassFront" src="img/drop/glass-front-clear.png" alt="Vitre avant">
+      </div>
+      <div class="slot" id="slotRear">
+        <img id="glassRear" src="img/drop/glass-rear-clear.png" alt="Vitre arrière">
+      </div>
+
+      <span class="drop-step" id="stepLabel">01 — Vitrage d'origine</span>
+      <div class="drop-progress">progression <b id="progressVal">0%</b></div>
+    </div>
+  </div>
+</div>
+
+<p class="drop-note">Photo de démonstration (véhicule non affilié à Blackteint33), utilisée uniquement pour montrer le principe visuel du film.</p>
+
+<!-- fallback prefers-reduced-motion : pas d'animation, resultat statique + bascule manuelle -->
+<div class="drop-static">
+  <div class="wrap">
+    <div class="scene" id="staticScene">
+      <img id="staticImg" alt="Véhicule de démonstration, vitrage teinté" loading="lazy">
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" data-state="clear">Vitrage clair</button>
+      <button class="toggle-btn active" data-state="tinted">Vitrage teinté</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRESTATIONS ================= -->
+<section id="prestations">
+  <div class="wrap">
+    <span class="k">Prestations</span>
+    <h2>Ce qui se fait à l'atelier.</h2>
+    <div class="presta-list">
+      <div class="presta-row">
+        <span class="n">01</span>
+        <div><h3>Vitres teintées</h3><p>Pose de film sur mesure, sans bulle ni trace — véhicules particuliers, utilitaires, vans, camping-cars.</p></div>
+        <span class="price">Dès 75 €</span>
+      </div>
+      <div class="presta-row">
+        <span class="n">02</span>
+        <div><h3>Teinte des feux</h3><p>Film sur optiques avant et arrière.</p></div>
+        <span class="price">Sur devis</span>
+      </div>
+      <div class="presta-row">
+        <span class="n">03</span>
+        <div><h3>Rénovation des phares</h3><p>Ponçage et traitement des optiques ternies ou jaunies.</p></div>
+        <span class="price">Dès 30 €/feu</span>
+      </div>
+      <div class="presta-row">
+        <span class="n">04</span>
+        <div><h3>Nettoyage FAP</h3><p>Décrassage du filtre à particules, sans démontage moteur.</p></div>
+        <span class="price">Sur devis</span>
+      </div>
+      <div class="presta-row">
+        <span class="n">05</span>
+        <div><h3>Décalaminage</h3><p>Nettoyage moteur, réduction des dépôts.</p></div>
+        <span class="price">Sur devis</span>
+      </div>
+      <div class="presta-row">
+        <span class="n">06</span>
+        <div><h3>Utilitaires &amp; vans</h3><p>Vitres teintées et finitions adaptées aux véhicules utilitaires, vans, camping-cars.</p></div>
+        <span class="price">Sur devis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TARIFS ================= -->
+<section id="tarifs">
+  <div class="wrap">
+    <span class="k">Tarifs vitres teintées</span>
+    <h2>Prix par gabarit de véhicule.</h2>
+    <p>3/4 arrière ou complet. Devis exact sur demande — certains véhicules demandent plus de temps.</p>
+    <div class="tarif-table">
+      <div class="tr th"><span>Gabarit</span><span>3/4 arrière</span><span>Complet</span></div>
+      <div class="tr"><span>Citadine (Clio 3p, Fiat 500, Polo 3p, Mini 3p, Corsa…)</span><span>130 €</span><span>160 €</span></div>
+      <div class="tr"><span>Citadine 5p / berline compacte (Série 1, Classe A, 308, C4, Mégane, Astra, A3…)</span><span>160 €</span><span>190 €</span></div>
+      <div class="tr"><span>Berline / break (508, Série 3/5, Talisman, Classe C/E, Insignia, Avensis, Prius…)</span><span>190 €</span><span>240 €</span></div>
+      <div class="tr"><span>SUV / monospace compact (Captur, 2008, Tiguan, Sportage, GLA…)</span><span>190 €</span><span>250 €</span></div>
+      <div class="tr"><span>SUV / monospace grand (X5/X6, Q7, GLC/GLE, Touareg, Espace, 5008…)</span><span>230 €</span><span>280 €</span></div>
+      <div class="tr"><span>2 vitres avant</span><span>75 € sans custode</span><span>95 € avec custode</span></div>
+    </div>
+    <p class="tarif-note">Utilitaires, camping-cars, vans, bâtiment : sur devis. « Custode » = vitre fixe triangulaire à l'arrière de la portière avant, sur certains modèles.</p>
+  </div>
+</section>
+
+<!-- ================= REGLEMENTATION ================= -->
+<section class="statement" id="reglementation">
+  <p>La loi autorise jusqu'à <b style="color:var(--accent)">30 %</b> de teinte sur les vitres avant — décret n° 2016-448, article 27. Blackteint33 pose des films clairs homologués, dans les règles.</p>
+  <span class="src">Réglementation détaillée sur demande à l'atelier</span>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="k">Contact</span>
+        <a href="tel:+33668646886" class="contact-phone">06 68 64 68 86</a>
+        <div class="contact-addr">
+          Atelier — 8 Chaloupin, 33210 Coimères<br>
+          Zone : Coimères · Langon · Sud Gironde<br>
+          Un appel suffit pour poser les bases.
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Maquette de démonstration — formulaire non connecté.');">
+        <span class="k" style="margin-bottom:2px">Demander un devis</span>
+        <div class="row2">
+          <input type="text" placeholder="Nom" required>
+          <input type="tel" placeholder="Téléphone" required>
+        </div>
+        <div class="row2">
+          <input type="text" placeholder="Modèle du véhicule" required>
+          <input type="text" placeholder="Année">
+        </div>
+        <input type="text" placeholder="Vitres concernées (avant / arrière / complet)">
+        <textarea placeholder="Message"></textarea>
+        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>BLACKTEINT33</span>
+  <span>Maquette de démonstration privée, non affiliée, non publiée.</span>
+</footer>
+
+<script>
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- fallback statique (reduced motion) : pas de scroll pilote, juste un bouton.
+  // L'image n'est chargee que si prefers-reduced-motion est vraiment actif, pour ne
+  // jamais faire payer ce poids aux visiteurs qui voient le moteur scroll normal.
+  if (reduceMotion) {
+    const staticImg = document.getElementById('staticImg');
+    staticImg.src = 'img/drop/base_car-1024.jpg';
+    document.querySelectorAll('.drop-static .toggle-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.drop-static .toggle-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        staticImg.src = btn.dataset.state === 'tinted'
+          ? 'img/drop/base_car-1024.jpg'
+          : 'img/drop/hero-audi-1024.jpg';
+      });
+    });
+    return; // pas besoin d'initialiser le moteur scroll
+  }
+
+  // ---- window drop engine ----
+  const pinWrap = document.getElementById('pinWrap');
+  const stage = document.getElementById('stage');
+  const slotFront = document.getElementById('slotFront');
+  const slotRear = document.getElementById('slotRear');
+  const glassFront = document.getElementById('glassFront');
+  const glassRear = document.getElementById('glassRear');
+  const stepLabel = document.getElementById('stepLabel');
+  const progressVal = document.getElementById('progressVal');
+
+  const FRONT = { left:40.47, top:46.63, width:13.04, height:8.11 };
+  const REAR  = { left:54.86, top:46.74, width:14.24, height:7.23 };
+
+  function layout(){
+    const h = stage.clientHeight;
+    [ [slotFront, FRONT], [slotRear, REAR] ].forEach(([el, box])=>{
+      const winH = h * box.height/100;
+      el.style.left = box.left + '%';
+      el.style.top = box.top + '%';
+      el.style.width = box.width + '%';
+      el.style.height = box.height + '%';
+      el.dataset.travel = (winH * 1.35).toFixed(1);
+    });
+  }
+
+  const FRONT_DOWN = [0.15, 0.35];
+  const REAR_DOWN  = [0.25, 0.45];
+  const REAR_UP    = [0.55, 0.75];
+  const FRONT_UP   = [0.65, 0.85];
+
+  function localT(t, [a,b]){ return Math.max(0, Math.min(1, (t-a)/(b-a))); }
+  function easeInOut(x){ return x<0.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
+
+  let frontTinted = false, rearTinted = false;
+
+  function update(t){
+    let fPos;
+    if (t < FRONT_DOWN[0]) fPos = 0;
+    else if (t < FRONT_DOWN[1]) fPos = easeInOut(localT(t, FRONT_DOWN));
+    else if (t < FRONT_UP[0]) fPos = 1;
+    else if (t < FRONT_UP[1]) fPos = 1 - easeInOut(localT(t, FRONT_UP));
+    else fPos = 0;
+
+    let rPos;
+    if (t < REAR_DOWN[0]) rPos = 0;
+    else if (t < REAR_DOWN[1]) rPos = easeInOut(localT(t, REAR_DOWN));
+    else if (t < REAR_UP[0]) rPos = 1;
+    else if (t < REAR_UP[1]) rPos = 1 - easeInOut(localT(t, REAR_UP));
+    else rPos = 0;
+
+    // le swap clair/teinte a lieu uniquement pendant que la vitre est cachee (invisible a l'oeil),
+    // et se defait aussi a la remontee si on revient en arriere (reversibilite complete)
+    if (!frontTinted && t >= FRONT_DOWN[1]) { glassFront.src = 'img/drop/glass-front-tinted.png'; frontTinted = true; }
+    if (!rearTinted && t >= REAR_DOWN[1]) { glassRear.src = 'img/drop/glass-rear-tinted.png'; rearTinted = true; }
+    if (frontTinted && t < FRONT_DOWN[1]) { glassFront.src = 'img/drop/glass-front-clear.png'; frontTinted = false; }
+    if (rearTinted && t < REAR_DOWN[1]) { glassRear.src = 'img/drop/glass-rear-clear.png'; rearTinted = false; }
+
+    const fTravel = parseFloat(slotFront.dataset.travel || 0);
+    const rTravel = parseFloat(slotRear.dataset.travel || 0);
+    glassFront.style.transform = `translateY(${fPos * fTravel}px)`;
+    glassRear.style.transform = `translateY(${rPos * rTravel}px)`;
+
+    let label = '01 — Vitrage d\'origine';
+    if (t >= 0.15 && t < 0.25) label = '02 — Descente avant';
+    else if (t >= 0.25 && t < 0.45) label = '03 — Descente arrière';
+    else if (t >= 0.45 && t < 0.55) label = '04 — Pose du film';
+    else if (t >= 0.55 && t < 0.85) label = '05 — Remontée teintée';
+    else if (t >= 0.85) label = '06 — Résultat';
+    stepLabel.textContent = label;
+    progressVal.textContent = Math.round(t*100) + '%';
+  }
+
+  function onScroll(){
+    const rect = pinWrap.getBoundingClientRect();
+    const total = pinWrap.offsetHeight - window.innerHeight;
+    const scrolled = -rect.top;
+    const t = Math.max(0, Math.min(1, scrolled/total));
+    update(t);
+  }
+
+  window.addEventListener('resize', ()=>{ layout(); onScroll(); });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  layout();
+  onScroll();
+
+  window.__forceT = function(t){
+    const total = pinWrap.offsetHeight - window.innerHeight;
+    window.scrollTo({top: pinWrap.offsetTop + t*total, behavior:'instant'});
+    layout();
+    update(t);
+  };
+})();
+</script>
+</body>
+</html>
